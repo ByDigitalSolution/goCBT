@@ -1,0 +1,147 @@
+:root {
+    --primary: #3b82f6;
+    --navy: #1e293b;
+    --gray: #64748b;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.auth-card {
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.logo { font-size: 2rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+h1 { font-size: 1.25rem; color: var(--navy); margin-bottom: 8px; }
+p { color: var(--gray); font-size: 0.9rem; margin-bottom: 30px; }
+
+/* Sliding Role Toggle */
+.role-selector {
+    display: flex;
+    position: relative;
+    background: #f1f5f9;
+    padding: 4px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.role-selector input { display: none; }
+
+.role-selector label {
+    flex: 1;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.role-slider {
+    position: absolute;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+#facRole:checked ~ .role-slider { transform: translateX(100%); }
+#facRole:checked ~ label[for="facRole"] { color: var(--primary); }
+#studentRole:checked ~ label[for="studentRole"] { color: var(--primary); }
+
+/* Form Elements */
+.input-group { text-align: left; margin-bottom: 20px; }
+.input-group label { display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 14px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+}
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #1e293b; /* Matches your portal navy */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Higher than everything else */
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+.splash-content {
+    text-align: center;
+    color: white;
+}
+
+.splash-logo {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #3b82f6;
+    margin-bottom: 20px;
+    letter-spacing: -1px;
+    animation: pulse 1.5s infinite;
+}
+
+.loader-bar {
+    width: 200px;
+    height: 4px;
+    background: #334155;
+    border-radius: 10px;
+    margin: 0 auto 15px;
+    overflow: hidden;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: #3b82f6;
+    animation: load 2s forwards;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes load {
+    to { width: 100%; }
+}
+
+/* Class to hide splash */
+.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
